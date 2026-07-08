@@ -3,7 +3,7 @@ package t3_data_class
 object ProductFactory {
     fun create(a: Int): Product {
         return Product(
-            id = a.toString(),
+            id = ProductId(a.toString()),
             name = "Product $a",
             price = 10.0 * a,
         )
@@ -31,7 +31,7 @@ object OrderFactory {
     fun create(a: Int): Order {
         val items = OrderItemFactory.createList(a)
         return Order(
-            id = a.toString(),
+            id = OrderId(a.toString()),
             items = items,
         )
     }
