@@ -13,7 +13,7 @@ data class Order(
     val status: OrderStatus = OrderStatus.PENDING,
 ) {
     /// Считаем общую стоимость заказа
-    fun total(): Double = items.sumOf { it.product.price * it.quantity }
+    val total: Double = items.sumOf { it.product.price * it.quantity }
 
     /// Находим продукт по id в заказе
     fun findProduct(id: ProductId): Product? = items.map { it.product }.find { it.id == id }

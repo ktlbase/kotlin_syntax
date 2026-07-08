@@ -5,7 +5,7 @@ object ProductFactory {
         return Product(
             id = ProductId(a.toString()),
             name = "Product $a",
-            price = 10.0 * a,
+            price = (5..500).random().toDouble(),
         )
     }
 
@@ -18,7 +18,7 @@ object OrderItemFactory {
     fun create(a: Int): OrderItem {
         return OrderItem(
             product = ProductFactory.create(a),
-            quantity = a,
+            quantity = (1..10).random(),
         )
     }
 
@@ -29,10 +29,11 @@ object OrderItemFactory {
 
 object OrderFactory {
     fun create(a: Int): Order {
-        val items = OrderItemFactory.createList(a)
+        val items = (1..10).map { OrderItemFactory.create(a) }
         return Order(
             id = OrderId(a.toString()),
             items = items,
+            status = OrderStatus.entries.random()
         )
     }
 
